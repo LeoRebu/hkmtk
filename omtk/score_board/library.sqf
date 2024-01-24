@@ -19,7 +19,7 @@ omtk_sb_start_mission_end = {
 
 omtk_sb_computing_display = {
 	if (hasInterface) then {
-		_computing_txt = format ["<t shadow='1' shadowColor='#CC0000'>- MISSION FINISHED -<br />Scores computing in progress...</t>"];
+		_computing_txt = format ["<t color='#1B1F17' shadow='1' shadowColor='#F77C0B'>- MISSION FINISHED -<br />Scores computing in progress...</t>"];
 		_computing_txt = parseText _computing_txt;
 		_computing_txt = composeText [_computing_txt];
 		[_computing_txt,0,0,15,0] spawn BIS_fnc_dynamicText;
@@ -34,31 +34,54 @@ omtk_sb_compute_scoreboard = {
 	omtk_sb_bluefor_survivors = [];
 	omtk_sb_redfor_survivors = [];
 	omtk_sb_greenfor_survivors = [];
+	
+	omtk_sb_mvp = ["",0];
+	omtk_sb_mvp_kills = 0;
+	omtk_sb_mvp_score = 0;
+	
 	{
 		_name = name _x; // test if name is OK TODO
 		_side = side _x;
 		_class = typeOf _x;
 		_dmg = damage _x;
+		
+		// _scores select 0 = Number of kills
+		// _scores select 5 = Total score
+		_scores = getPlayerScores _x;
 
 		if(_side==east) then {
-			if ((damage player) < 0.975) then { [omtk_sb_redfor_survivors, _name] call BIS_fnc_arrayPush; };
+			if ((damage player) < 0.975) then { [omtk_sb_redfor_survivors, format["%1 - %2 Kills",_name,_scores select 0]] call BIS_fnc_arrayPush; };
 		} else {
 			if(_side==west) then { 
-				if ((damage player) < 0.975) then { [omtk_sb_bluefor_survivors, _name] call BIS_fnc_arrayPush; };
+				if ((damage player) < 0.975) then { [omtk_sb_bluefor_survivors, format["%1 - %2 Kills",_name,_scores select 0]] call BIS_fnc_arrayPush; };
 			} else {
 				if(_side==resistance) then { 
-					if ((damage player) < 0.975) then { [omtk_sb_greenfor_survivors, _name] call BIS_fnc_arrayPush; };
+					if ((damage player) < 0.975) then { [omtk_sb_greenfor_survivors, format["%1 - %2 Kills",_name,_scores select 0]] call BIS_fnc_arrayPush; };
 				};
 			};
 		};
+		
+		
+		if ( (_scores select 0) > (omtk_sb_mvp select 1) ) then {
+			omtk_sb_mvp = [_name,_scores select 0];
+			omtk_sb_mvp_score = _scores select 5;
+		} else {
+			if ( (_scores select 0) == (omtk_sb_mvp select 1) && (_scores select 5) > omtk_sb_mvp_score ) then {
+				omtk_sb_mvp = [_name,_scores select 0];
+				omtk_sb_mvp_score = _scores select 5;
+			};
+		};
+		
 	} forEach allPlayers;
 	
 	missionNamespace setVariable ["omtk_sb_bluefor_survivors", omtk_sb_bluefor_survivors];
 	missionNamespace setVariable ["omtk_sb_redfor_survivors", omtk_sb_redfor_survivors];
 	missionNamespace setVariable ["omtk_sb_greenfor_survivors", omtk_sb_greenfor_survivors];
+	missionNamespace setVariable ["omtk_sb_mvp", omtk_sb_mvp];
 	publicVariable "omtk_sb_redfor_survivors";
 	publicVariable "omtk_sb_bluefor_survivors";
 	publicVariable "omtk_sb_greenfor_survivors";
+	publicVariable "omtk_sb_mvp";
 	
 	// Calculates scores for each team (getObjectiveResult on each objective to get result (boolean)) 
 	// _x select 0 -> how many points to assign 

@@ -2,8 +2,12 @@
 sb_s = missionNamespace getVariable "sb_s";
 sb_o = missionNamespace getVariable "sb_o";
 
+_text = format["%1", sb_s select 0];
+ctrlSetText [1290, _text];
+_text = format["%1", sb_s select 1];
+ctrlSetText [1291, _text];
 
-_text = format["%1 pts          OBJECTIVES           %2 pts", sb_s select 0, sb_s select 1];
+_text = format["OBJECTIVES"];
 ctrlSetText [1510, _text];
 
 _index = 2;
@@ -21,11 +25,16 @@ _index = 2;
 	};
 } foreach sb_o;
 
+_mvp = missionNamespace getVariable "omtk_sb_mvp";
+//hint format["%1 - %2", _mvp select 0, _mvp select 1];
+_text = format["MVP: %1", _mvp select 0];
+ctrlSetText [1523, _text];
+_text = format["%1 Kills", _mvp select 1];
+ctrlSetText [1524, _text];
 
 // SET SURVIVORS
 _bluefor_survivors = missionNamespace getVariable "omtk_sb_bluefor_survivors";
 _redfor_survivors  = missionNamespace getVariable "omtk_sb_redfor_survivors";
-
 _text = format["%1            SURVIVORS           %2", count _bluefor_survivors, count _redfor_survivors];
 ctrlSetText [1520, _text];
 

@@ -58,9 +58,9 @@ if (!isNil "_mission_duration_override") then {
 _endTime = _startTime + (_endHour + (_endMinute / 60));
 _eTimeString = [_endTime, "HH:MM"] call BIS_fnc_timeToString;
 
-player createDiaryRecord ["Diary", ["Crédits", "Mission réalisée avec l'OMTK"]];
+player createDiaryRecord ["Diary", ["Credits", "Rigel for HKMTK, Wombat for chat limiter and Kremit for HK radios"]];
 
-player createDiaryRecord ["Diary", ["Donations", "If you enjoy our missions and wish to support us, we welcome donations to help fund the server for the years to come!<br/>You can find more information on how to donate over in our website, at the page https://www.ofcrav2.org/en/the-association/donate"]];
+player createDiaryRecord ["Diary", ["Donations", "WE DONT WANT YOUR MONEY, go buy a gaming chair"]];
 
 player createDiaryRecord ["Diary", ["Mission Timings", "<font color='#7FFF00' size='30'>Mission Start Time: " + _sTimeString + "<br/>Mission End Time: " + _eTimeString + "</font>" ]];
 
@@ -83,21 +83,23 @@ if (("OMTK_MODULE_MEXICAN_STANDOFF" call BIS_fnc_getParamValue) < 1) then {
 
 player createDiaryRecord ["Diary", ["Rules", "<font size='15'>
 General rules of our games:<br/>
- - No technical support will be provided after 21h00 on the mission evening<br/>
- - Stealing radios is prohibited<br/>
- - Stealing uniforms (hats, clothes, vest) is prohibited<br/>
- - You can only use TFAR to communicate ingame. Any other way of communicating is strictly forbidden (that includes steam messages)<br/>
- - The ingame chat is only allowed for technical issues.<br/>
- - Respect the hierarchy, orders from your superiors and the chain of command<br/>
- - NO AI units. Please close the unused slots<br/>
- - Stealing vehicles : it will be specified on each topic and mission rules specifically, what vehicles can be stolen.<br/>
- - Running over an enemy intentionally with your vehicle is not allowed. Similarly, using an aerial vehicle to kill players on the ground is strictly prohibited if it causes the vehicle to crash. The same goes for hoisted vehicles. For example, using a helicopter's minigun to kill a player is allowed. Crashing the helicopter in order to eliminate the player or his vehicle is strictly prohibited. Casting off a boat in order to achieve a similar result is also prohibited.<br/>
- - Markers on map are authorized<br/>
- - The mission maker is authorised to create more rules according to their desires.<br/>
- - You are not allowed to keep and AI at the start of the game in order to kill it and take its equipment<br/>
- - It is mandatory to use the vehicles allocated to your squad in the slot list by the editor. If the vehicles haven't been assigned by the editor, this responsibility lies in the hands of the side leader.<br/>
- - It is mandatory to at least have a squad leader to take the others slots in the squad, except for the rifleman (and potential other slots that you've been given permission to take by OFCRA staff)<br/>
- - Lonewolfing is strictly forbidden. We consider as lonewoling any person who is too far away from their squad. In precise terms, the space between the more distant members of the squad should not be more than 200 meters.<br/>
- - The rule above does not apply to side leaders when they are alone in their squad. If they have one or more squad mates, the rule then applies to him and his teamates.<br/>
- - When vehicles are attached to a squad, the maximum distance they can get away from is 600 meters. The calculation of the distance is the same way you would do it for infantery: between the two players which are further away from each other (in this case a vehicle and an infantry member. If the crew has to leave the vehicle for any reason, they have to regroup with their squad or any allied forces as soon as they can. They are not allowed to seek contact. 
+ - The stealing of radios is not allowed<br/>
+ - It is not allowed to change your uniform, vest or headgear, this includes undressing<br/>
+ - Metagaming is strictly forbidden<br/>
+ - This includes any messages regarding current game events (i.e. mocking a teammate on steam chat because he missed a shot)<br/>
+ - Terrain and object abuse is not allowed.<br/>
+ - Intentionally running over players with vehicles is forbidden<br/>
+ - Intentionally ramming other vehicles to cause a disadvantage for the enemy is forbidden (don’t try to flip vehicles by ramming)<br/>
+ - Placing objects inside of vehicles to flip them is forbidden<br/>
+ - Using helicopters to intentionally crash into enemies is forbidden<br/>
+ - Using a helicopter to drop a sling loaded vehicle with the intent of hitting enemy players is forbidden<br/>
+ - It is not allowed to permanently block the entrance of objectives<br/>
+ - Leaving the designated playing area is forbidden<br/>
+ - You are supposed to follow your commanders orders<br/>
+ - Some missions may have specific rules which could deviate from this<br/>
+ - Using any form of technical tool to alter your game experience (i.e. cheats/hacks) is strictly prohibited<br/>
+ - Attempting to dupe the assets of the commander asset selector is forbidden – if there’s two possible options to choose from you’re only supposed to take one<br/>
+ - It is not allowed to intentionally lower your gaming performance in order to negatively affect
+your sides outcome<br/>
+ - Anyone who is playing outside the spirit of the game is open to being acted upon by admins. 
 </font>" ]];

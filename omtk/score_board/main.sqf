@@ -41,18 +41,18 @@ if (isServer) then {
 		_gameEnd = dayTime + _omtk_mission_duration/3600;
 		
 		if (_gameEnd < 24) then {
-			waitUntil { sleep 20; dayTime > (_gameEnd - 0.33333) };
-			("20 Minutes Left") remoteExecCall ["hint"];
+			waitUntil { sleep 20; dayTime > (_gameEnd - 0.166667) };
+			("10 Minutes Left") remoteExecCall ["hint"];
 			
 			waitUntil { sleep 2; dayTime > _gameEnd };
 		} else {
 			
 				
 			waitUntil { sleep 20; 
-				dayTime > (_gameEnd - 0.33333) || 
-				( dayTime > (_gameEnd - 0.33333)-24 && dayTime < (_gameEnd - 0.33333)-23 )
+				dayTime > (_gameEnd - 0.166667) || 
+				( dayTime > (_gameEnd - 0.166667)-24 && dayTime < (_gameEnd - 0.166667)-23 )
 			};
-			("20 Minutes Left") remoteExecCall ["hint"];
+			("10 Minutes Left") remoteExecCall ["hint"];
 				
 			waitUntil { sleep 2; dayTime > _gameEnd-24 && dayTime < _gameEnd-23 };
 				
@@ -269,7 +269,7 @@ if (hasInterface) then {
 	_txtFormat = "%1h%2m";
 	if (_omtk_mission_endTime_minute < 10) then {_txtFormat = "%1h0%2m"; };
 	_end_time_txt = format [_txtFormat,_omtk_mission_endTime_hour,_omtk_mission_endTime_minute];
-	_end_time_txt = format ["<t shadow='1' shadowColor='#CC0000'>End of mission : %1</t>", _end_time_txt];
+	_end_time_txt = format ["<t color='#1B1F17' shadow='1' shadowColor='#F77C0B'>End of mission : %1</t>", _end_time_txt];
 	_end_time_txt = parseText _end_time_txt;
 	
 	_omtk_mission_end_time_txt = composeText [_end_time_txt];

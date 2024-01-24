@@ -111,11 +111,11 @@ if (hasInterface) then {
 				if ( _BuddiesAlive == 0 || (_BuddiesToFar >= 2 ) ||	(_BuddiesToFar == 1 && _BuddiesAlive == 1 )	) then {
 					//Inform Player
 					if((_GiveWarning || _LoneWolfDebug) && _BuddiesAlive > 0) then { 
-						systemChat format ["[LoneWolf] You lost your lads!"]; 
+						systemChat format ["[LoneWolf] Keep an eye on your coordination"]; 
 					};
 					
 					if((_GiveWarning || _LoneWolfDebug) && _BuddiesAlive == 0) then { 
-						systemChat format ["[LoneWolf] You're alone, join another squad!"]; 
+						systemChat format ["[LoneWolf] Keep an eye on your coordination"]; 
 					};
 					
 					

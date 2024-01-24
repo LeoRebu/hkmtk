@@ -7,6 +7,16 @@ omtk_wu_move_player_at_spawn_if_required = {
 	};
 };
 
+// Creation of the spawn marker
+omtk_wu_fn_show_zone = {
+	_marker = createMarkerLocal ["SpawnZone", position player];
+	"SpawnZone" setMarkerShapeLocal "ELLIPSE";
+	"SpawnZone" setMarkerSizeLocal [omtk_wu_radius, omtk_wu_radius];
+	"SpawnZone" setMarkerColorLocal "ColorOrange";
+	"SpawnZone" setMarkerBrushLocal "Border";
+};
+
+
 // Creation of the "restrict_area_trigger" that'll call "move_player_at_spawn_if_required" fnc.
 omtk_wu_restrict_area = {
 	omtk_wu_restrict_area_trigger = createTrigger ["EmptyDetector", omtk_wu_spawn_location, false];
@@ -18,6 +28,8 @@ omtk_wu_restrict_area = {
 	// The trigger deactivates upon players (or the vehicle they're in) not being in the zone. Deactivation triggers the hint and the function to teleport the player back.
 	// Upon reactivation, the hintSilent removes the warning.
 	omtk_wu_restrict_area_trigger setTriggerStatements ["player in thisList || vehicle player in thisList", "hintSilent '';", _trg_out_action];
+	
+	[] call omtk_wu_fn_show_zone;
 };
 
 // Creating and displaying notification text with warmup length
@@ -32,7 +44,7 @@ omtk_wu_display_warmup_txt = {
 		_omtk_mission_warmup_txt = _omtk_mission_warmup_txt + " " + str(_omtk_mission_warmup_second) + " sec.";
 	};
 	
-	_omtk_notification_txt = format ["<t shadow='1' shadowColor='#00A6DD'>- - - WARMUP: " + _omtk_mission_warmup_txt + " - - -</t>"];
+	_omtk_notification_txt = format ["<t color='#1B1F17' shadow='1' shadowColor='#F77C0B'>- - - WARMUP: " + _omtk_mission_warmup_txt + " - - -</t>"];
 	_omtk_notification_txt = parseText _omtk_notification_txt;
 	_omtk_notification_txt = composeText [_omtk_notification_txt];
 	[_omtk_notification_txt,0,0,25,2] spawn BIS_fnc_dynamicText;
@@ -57,6 +69,8 @@ omtk_wu_end_warmup = {
 		} forEach vehicles;
 		
 		deleteVehicle omtk_wu_restrict_area_trigger;
+		
+		deleteMarkerLocal "SpawnZone";
 
 	};
 	// On server, sets variable to prevent warmup for JIP players, 
@@ -64,6 +78,9 @@ omtk_wu_end_warmup = {
 	if (isServer) then {
 		missionNamespace setVariable ["omtk_wu_is_completed", true];
 		publicVariable "omtk_wu_is_completed";
+		{
+			_x allowDamage true;
+		} forEach vehicles;
 		
 		if (omtk_disable_playable_ai == 1) then {
 			call omtk_delete_playableAiUnits;
@@ -86,3 +103,5 @@ omtk_wu_fn_launch_game = {
 		};
 	};
 };
+
+

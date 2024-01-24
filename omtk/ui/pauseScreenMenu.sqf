@@ -102,14 +102,16 @@ private _uid = getplayerUID player;
 
 /*
 76561198004582151 - Manchot
-76561197968544972 - Flip4flap
 76561198089279362 - PHK4900
 76561198106536334 - Nasa
-76561197969410208 - Daedalus
-76561198059014268 - MrWhite350
+76561198045877943 - Rigel
+76561197963359463 - Pogo_
+76561198077070073 - Kremit
+76561197972754614 - Wombat
+76561198111741251 - Depso
 */
 // if not admin, exit
-if !(serverCommandAvailable "#kick" or _uid == "76561198004582151" or	_uid == "76561197968544972" or _uid == "76561198089279362" or _uid == "76561198106536334" or _uid == "76561197969410208" or	_uid == "76561198059014268") exitwith {};
+if !(serverCommandAvailable "#kick" or _uid == "76561198004582151" or _uid == "76561198089279362" or _uid == "76561198106536334" or _uid == "76561198045877943" or _uid == "76561197963359463" or _uid == "76561198077070073" or _uid == "76561197972754614" or _uid == "76561198111741251") exitwith {};
 
 _name = _display ctrlCreate["ctrlEdit", 10002];
 _name ctrlsetPosition [
@@ -259,6 +261,27 @@ _respawnButton ctrlAddEventHandler ["Buttondown", {
     _selected = _playerlist lbtext _selectedindex;
     
     [_selected] remoteExec ['omtk_respawn_unit', 0];
+}];
+
+
+_hardResetButton = _display ctrlCreate ["omtk_RscButton", 1201];
+_hardResetButton ctrlsetPosition [
+    0.684 * safeZoneW + safeZoneX,
+    0.20 * safeZoneH + safeZoneY,
+    0.06 * safeZoneW,
+    0.03 * safeZoneH
+];
+_hardResetButton ctrlCommit 0;
+_hardResetButton ctrlsettext "Hard Reset";
+_hardResetButton ctrlsetBackgroundColor [0.2, 0.2, 0.8, 1];
+_hardResetButton ctrlAddEventHandler ["Buttondown", {
+    params[ "_hardResetButton" ];
+
+    _playerlist = ctrlParent _hardResetButton displayCtrl 10000;
+    _selectedindex = lbCurSel _playerlist;
+    _selected = _playerlist lbtext _selectedindex;
+
+    [_selected] remoteExec ['omtk_reset_unit', 0];
 }];
 
 // * SIMULATION CONTROL */

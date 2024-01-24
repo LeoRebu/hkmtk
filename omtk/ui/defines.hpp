@@ -105,11 +105,11 @@ class omtk_RscText
   style = ST_CENTER;
   linespacing = 1;
   colorBackground[] = {0,0,0,0};
-  colorText[] = {1,1,1,1};
+  colorText[] = {0.106,0.122,0.09,1};
   text = "";
   shadow = 0;
-  font = "puristaMedium";
-  SizeEx = 0.03;
+  font = "TahomaB";
+  SizeEx = 0.05;
   fixedWidth = 0;
   x = 0;
   y = 0;
@@ -199,7 +199,7 @@ class omtk_RscListBox {
   style = 0;
   w = 0.4;
   h = 0.4;
-  font = "puristaMedium";
+  font = "TahomaB";
   sizeEx = 0.03;
   rowHeight = 0;
   colorText[] = {1,1,1,1};
@@ -209,7 +209,7 @@ class omtk_RscListBox {
   colorSelect2[] = {1,0.2,0.2,1};
   colorSelectBackground[] = {0.6,0.6,0.6,1};
   colorSelectBackground2[] = {0.2,0.2,0.2,1};
-  colorBackground[] = {0,0,0,1};
+  colorBackground[] = {0.106,0.122,0.09,1};
   maxHistoryDelay = 1.0;
   soundSelect[] = {"",0.1,1};
   period = 1;

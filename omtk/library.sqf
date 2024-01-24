@@ -345,7 +345,7 @@ omtk_warn_unit = {
 	_name = _this select 0;
 
 	if (_name == name player) then {
-		titleText ["<t color='#ff0000' size='5'>YOU ARE LONEWOLFING! RETURN TO THE REST OF YOUR SQUAD</t><br/>", "PLAIN", 1, true, true];
+		titleText ["<t color='#ff0000' size='5'>An Admin has noticed you are out of position, solve this issue yourself or an admin will solve it for you</t><br/>", "PLAIN", 1, true, true];
 		_omtk_wpnSafety = player getVariable ["omtk_weaponsafety", 0];
 		_omtk_wpnSafety = player addAction ["Weapon safety on", {hintSilent "Safety On";}, [], 0, false, false, "DefaultAction", ""];
 		player setVariable ["omtk_weaponsafety", _omtk_wpnSafety];
@@ -366,6 +366,18 @@ omtk_respawn_unit = {
 		loadout = player getVariable ["playerLoadout", 0];
 		player setUnitLoadout [loadout, true];
 	};
+};
+
+omtk_reset_unit = {
+    _name = _this select 0;
+
+    if (_name == name player) then {
+        prevScope = "";
+        prevWeapon = primaryWeapon player;
+
+        loadout = player getVariable ["playerLoadout", 0];
+        player setUnitLoadout [loadout, true];
+    };
 };
 
 omtk_disable_ti = {

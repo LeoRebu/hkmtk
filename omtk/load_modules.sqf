@@ -31,6 +31,7 @@ omtk_load_post_warmup = {
 omtk_load_warmup = {
 	if (("OMTK_MODULE_WARM_UP" call BIS_fnc_getParamValue) > 0) then {
 		execVM "omtk\warm_up\main.sqf";
+		execVM "omtk\warm_up_selector\main.sqf";
 	} else {
 		call omtk_load_post_warmup;
 	};
@@ -46,7 +47,6 @@ if (("OMTK_MODULE_RADIO_LOCK" 		call BIS_fnc_getParamValue) > 0) then { execVM "
 if (("OMTK_MODULE_KILL_LOGGER" 		call BIS_fnc_getParamValue) > 0) then { execVM "omtk\kill_logger\main.sqf"; };
 if (("OMTK_MODULE_RAMBO_DIST" 		call BIS_fnc_getParamValue) > 0) then { execVM "omtk\rambo_warn\main.sqf"; };
 
-execVM "omtk\uniform_lock\main.sqf";
 execVM "omtk\ia_manager\main.sqf"; 
 
 if (("OMTK_MODULE_DYNAMIC_STARTUP" 			call BIS_fnc_getParamValue) > 0) then {

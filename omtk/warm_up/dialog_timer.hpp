@@ -3,7 +3,7 @@ class timer_RscFrame {
 	idc = -1;
 	shadow = 1;
 	colorBackground[] = {0,0,0,0};
-	colorText[] = {0.6,0.6,0.6,1};  
+	colorText[] = {0.106,0.122,0.09,1}; 
 	style = 64;
 	//w = 0.055583;
 	//h = 0.039221;
@@ -21,7 +21,7 @@ class timer_RscText
   style = ST_CENTER;
   linespacing = 1;
   colorBackground[] = {0,0,0,0};
-  colorText[] = {1,0.1,0.1,1};
+  colorText[] = {0.969,0.486,0.043,1};
   text = "";
   shadow = 2;
   font = "puristaMedium";

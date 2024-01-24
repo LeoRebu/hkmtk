@@ -46,6 +46,9 @@ omtk_wu_com_menu_item_id = 0;
 if (isServer) then {
 		
 	[] spawn {
+		{
+			_x allowDamage false;
+		} forEach vehicles;
 		
 		waitUntil { time > 0 };
 		_startDate = o_wse select 0;
@@ -106,8 +109,7 @@ if (hasInterface) then {
 		[] call omtk_wu_restrict_area;
 		
 		[] call omtk_wu_display_warmup_txt;
-		
-		
+				
 		[] spawn {
 		
 			waitUntil { time > 0 };
@@ -119,12 +121,14 @@ if (hasInterface) then {
 			_vdCheck = false;
 			_stopWarmup = false;
 			
+			waitUntil { time > 5 };
 			disableSerialization; 
 			19998 cutRsc ["timerClass","PLAIN"];  
 			_timerGui = uiNamespace getVariable "timerDiag"; 
 			_timerTxt = _timerGui displayCtrl 1322;
 			
-			while { sleep 0.5 ; !_stopWarmup} do {				
+			while { sleep 0.5 ; !_stopWarmup} do {	
+			
 				// Means we went from 23.999 to 0 (day change happens during warmup)
 				if (dayTime < _realDayTime) then {
 					// realDayTime continues as 24.xxxx, just as _warmupEnd presumably will

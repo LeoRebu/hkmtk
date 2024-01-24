@@ -1,8 +1,7 @@
-author = "OFCRA"; 	// TO BE DEFINED
-onLoadName = "MISSION NAME";	// TO BE DEFINED
-onLoadMission = "www.ofcrav2.org";	// TO BE DEFINED
-onLoadIntro = "Prepare for the fight !";	// TO BE DEFINED
-briefingName = "Nom de la mission"; // TO BE DEFINED (nom de la mission, affiché dans la liste des missions sur l'interface du serveur)
+author = "Nasa"; 	// TO BE DEFINED
+onLoadName = "Mission Name";	// TO BE DEFINED
+onLoadMission = "Bottom Text";	// TO BE DEFINED
+briefingName = "season1_mission1_v1"; // TO BE DEFINED (Name of the mission shown on the server list)
 loadScreen = "loadscreen.jpg";
 Debriefing = 0;
 respawnOnStart = -1;
@@ -70,7 +69,7 @@ class Params
 		title = "Scoreboard";
 		texts[] = {"off","15 min", "30 min","45 min","1 h","1 h 15 min","1 h 30 min","1 h 45 min"," 2 h","2 h 30 min"};
 		values[] = {0,900,1800,2700,3600,4500,5400,6300,7200,9000};
-		default = 5400;
+		default = 3600;
 	};
 	class OMTK_MODULE_TACTICAL_PARADROP
 	{
@@ -84,13 +83,13 @@ class Params
 		title = "Warm-up";
 		texts[] = {"off","30 s","1 min","1 min 30 s","2 min","3 min","5 min","8 min","10 min","15 min","20 min"};
 		values[] = {0,30,60,90,120,180,300,480,600,900,1200};
-		default = 10;
+		default = 300;
 	};
 	class OMTK_MODULE_VIEW_DISTANCE
 	{
 		title = "View distance";
 		values[] = {500,1000,1500,2000,2500,3000,4000,5000,6000,8000};
-		default = 4000;
+		default = 2500;
 	};
 	class OMTK_MODULE_DISABLE_PLAYABLE_AI
 	{
@@ -188,7 +187,7 @@ class Params
 		title = "Warm-up: zone restriction";
 		texts[] = {"10 m","30 m","50 m","100 m","150 m","200 m","300 m","400 m","500 m"};
 		values[] = {10,30,50,100,150,200,300,400,500};
-		default = 150;
+		default = 100;
 	};
 	class OMTK_MODULE_WARM_UP_SAFETY
 	{
